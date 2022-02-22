@@ -1,6 +1,6 @@
 import React,{createContext,Dispatch,ReactNode,useContext,useEffect,useReducer} from 'react';
 
-import { Action, ActionTypes, defaultLocationUrl, params } from './constants ';
+import { Action, ActionTypes, defaultLocationUrl, params, SearchByGeolocationType } from './constants ';
 
 import { reducer } from './weatherReducer';
 
@@ -8,11 +8,14 @@ import { reducer } from './weatherReducer';
 export interface weatherContextState {
          location: string;
         defaultTemperatureMetric: string;
+        locationData:SearchByGeolocationType | null;
 }
 
 const initialState : weatherContextState = {
     location:"Vienna",
-    defaultTemperatureMetric:"c"
+    defaultTemperatureMetric:"c",
+    locationData:null
+    
 }
 
 

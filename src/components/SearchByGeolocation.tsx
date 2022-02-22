@@ -8,7 +8,7 @@ const  SearchByGeolocation :React.FC = () => {
       console.log(latitude,longitude);
    })    
 
-
+   
    
 
   return (

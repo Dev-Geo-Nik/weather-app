@@ -10,7 +10,7 @@ type ReducerType = (state : weatherContextState ,action:Action) => weatherContex
 export const reducer : ReducerType = (state,action) => {
 switch (action.type) {
       case  ActionTypes.FETCH_DEFAULT_LOCATION:
-         return ({...state,location:action.payload});
+         return ({...state,locationData:action.payload});
       case  ActionTypes.FETCH_NEW_LOCATION_INPUT_VALUE:
          return ({...state,location:action.payload});
     default:
