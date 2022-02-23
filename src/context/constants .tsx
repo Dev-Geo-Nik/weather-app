@@ -1,18 +1,25 @@
 export enum ActionTypes {
-    FETCH_DEFAULT_LOCATION = "FETCH_DEFAULT_LOCATION",
-    FETCH_NEW_LOCATION_INPUT_VALUE = "FETCH_NEW_LOCATION_INPUT_VALUE",
+    FETCH_INITIAL_USER_DATA = "FETCH_INITIAL_USER_DATA",
+    FETCH_LOCATION = "FETCH_LOCATION",
+    FETCH_NEW_GEOLOCATION = "FETCH_NEW_GEOLOCATION",
+    FETCH_NEW_LOCATION  = "FETCH_NEW_LOCATION",
+    FETCH_NEW_LOCATION_WITH_LAT_LNG = "FETCH_NEW_LOCATION_WITH_LAT_LNG",
 }
 
 
 // export enum PayloadTypes{}
 
-export interface Action {
+export type Action = {
     type: ActionTypes;
-    payload?:any;
+    payload: any;
 }
 
 
-export type SearchByGeolocationType = {
+
+
+
+
+export type SearchGeolocationType = {
 
     location: {
         city: string;
@@ -61,7 +68,47 @@ export type SearchByGeolocationType = {
     ]
 }
 
-export const defaultLocationUrl = "https://yahoo-weather5.p.rapidapi.com/weather?location=vienna&format=json&u=c";
+
+export type IpLocationOfVisitorType = {
+    continent:string,
+    country:string,
+    zipCode: string,
+    accuracyRadius: number,
+    flag: string,
+    city: string,
+    timezone: string,
+    latitude:number,
+    countryGeoNameId: number,
+    gmt:string,
+    network: string,
+    currencyName: string,
+    countryNativeName: string,
+    stateGeoNameId: number,
+    phoneCode: string,
+    state: string,
+    continentCode: string,
+    longitude:number, 
+    currencyNamePlural: string,
+    cityGeoNameId: number,
+    languages:string,
+    numOfCities: number,
+    org: string,
+    ip: string, 
+    currencySymbol: string,
+    currencySymbolNative: string,
+    isEU: string,
+    countryTLD: string,
+    countryCapital: string,
+    metroCode:null,
+    continentGeoNameId: number,
+    stateCode: string,
+    countryISO2: string,
+    numOfStates: number,
+    countryISO3: string,
+    currencyCode: string,
+    asNo: number,
+    status: number
+} 
 
 export const params = {
     method: "GET",

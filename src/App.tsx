@@ -1,18 +1,19 @@
 
 import React from 'react';
-import SearchByGeolocation from './components/SearchByGeolocation';
-import SearchByInputValue from './components/SearchByInputValue';
-import WeatherCard from './components/WeatherCard';
+
+import WeatherAppContainer from './components/WeatherAppContainer';
+
   
 
 const  App :React.FC = () => {
-  
+    
+
   return (
-  <div>
-    {/* <SearchByInputValue/> */}
-    <SearchByGeolocation/>
-    <WeatherCard/>
-  </div>
+  <section>
+    
+     {/* <SearchLocationMethods/>  */}
+    <WeatherAppContainer/>
+  </section>
 );
 };
 

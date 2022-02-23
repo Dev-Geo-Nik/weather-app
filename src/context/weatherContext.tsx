@@ -1,6 +1,6 @@
 import React,{createContext,Dispatch,ReactNode,useContext,useEffect,useReducer} from 'react';
 
-import { Action, ActionTypes, defaultLocationUrl, params, SearchByGeolocationType } from './constants ';
+import { Action, ActionTypes, params, SearchGeolocationType } from './constants ';
 
 import { reducer } from './weatherReducer';
 
@@ -8,13 +8,17 @@ import { reducer } from './weatherReducer';
 export interface weatherContextState {
          location: string;
         defaultTemperatureMetric: string;
-        locationData:SearchByGeolocationType | null;
+        locationData:SearchGeolocationType | null;
+        latitude : number | null;
+        longitude : number | null;
 }
 
 const initialState : weatherContextState = {
     location:"Vienna",
     defaultTemperatureMetric:"c",
-    locationData:null
+    locationData:null,
+    latitude:null,
+    longitude:null
     
 }
 
@@ -37,44 +41,17 @@ dispatch:()=>{}
 
 //Provider name must start with capital letter
 export const WeatherContextProvider = ({
-children,
-}:{
-children: ReactNode;
-}) => {
-const [state, dispatch] = useReducer (reducer,initialState);
-
-
-  useEffect(()=>{
-    fetchData(defaultLocationUrl,params,ActionTypes.FETCH_DEFAULT_LOCATION)
-  },[])
-
-
-    const fetchData = async  (link:string,params:{},type:ActionTypes) =>{
-            
-  //    let loading = true;
-  
-      try {
-          const res = await fetch(link, params);
-  
-           if (res.status >= 200 || res.status <= 299 ) {
-               const data   = await res.json();
-              console.log(data);
-               dispatch({type:type,payload:data});            
-           }
-       } catch (error) {
-               console.log(error)
-              // dispatch({type:ActionTypes.ERROR, payload:error})
-       }
-  
-    }
     
+    children,
+    }:{
+    children: ReactNode;
+    }) => {
+    const [state, dispatch] = useReducer (reducer,initialState);
 
-
-
-return(
-<weatherContext.Provider value = {{ state, dispatch }}>
-{children}
-</weatherContext.Provider>
+    return(
+    <weatherContext.Provider value = {{ state, dispatch }}>
+    {children}
+    </weatherContext.Provider>
 )};
 
 

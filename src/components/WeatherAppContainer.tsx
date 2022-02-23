@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { useWeatherContext } from '../context/weatherContext';
 import { WiCloudy } from "react-icons/wi";
-import { FaSearchLocation } from "react-icons/fa";
-import { IoLocationSharp, IoLocationOutline} from "react-icons/io5";
 
-const  WeatherCard :React.FC = () => {
-    
-    const {state:{locationData,defaultTemperatureMetric} } = useWeatherContext();
+import SearchLocationMethods from './SearchLocationMethods';
 
+const  WeatherAppContainer :React.FC = () => {
+
+    const {state:{locationData,location,defaultTemperatureMetric} } = useWeatherContext(); 
+    console.log(location)
     let displayInfos: (JSX.Element|null) = null;
 
-
+ 
 
     if (locationData) {
 
@@ -27,7 +27,7 @@ const  WeatherCard :React.FC = () => {
           forecasts
         } = locationData;
         
-        console.log(direction)
+        // console.log(direction)
 
       let arrayData = forecasts.map((forecast,index)=>{
         // const {code,date,high,day,low,text} = forecast;
@@ -39,7 +39,7 @@ const  WeatherCard :React.FC = () => {
 
                 return( 
                 <div className="list-container" key={forecast.date}>
-                   <p className="day-text">{forecast.day}</p>
+                   <p className="day-text">{index === 0 ? "Today":forecast.day}</p>
                    <p className="icon-container"> {<WiCloudy className="icon"/>}</p>
                    <p className="weather-text">{forecast.text}</p>
                    <p className="day-low">{forecast.low}&deg;</p>
@@ -55,13 +55,7 @@ const  WeatherCard :React.FC = () => {
 
                })
       displayInfos =  <div className="container">
-                             <div className="search-container">
-                                    <div className="search-input-container">
-                                        <FaSearchLocation className="icon-search"/>
-                                         <input type="text" />
-                                    </div>
-                                    <IoLocationSharp className="icon-location"/>
-                             </div>
+                             
                             <h1 className="city-title">{city}</h1>
                             <h5 className="country-title">{country}</h5>
                             <p className="temperature">{temperature }<span className="celsius-text">&deg;</span> </p>
@@ -84,22 +78,22 @@ const  WeatherCard :React.FC = () => {
 
 
   return (
-    <WeatherCardElement >
-    
-
+    <WeatherAppContainerElement >
+       <SearchLocationMethods/>
         {displayInfos}
      
-    </WeatherCardElement >
+    </WeatherAppContainerElement >
 );
 };
 
-export default WeatherCard;
+export default WeatherAppContainer;
 
 
-const WeatherCardElement = styled.div`
+const WeatherAppContainerElement = styled.div`
 
       border: 1px solid #000;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       
@@ -109,13 +103,7 @@ const WeatherCardElement = styled.div`
 
         }
 
-      /* Search  */
-      .search-container{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        
-      }
+      
 
       /*Array styles  */
       
