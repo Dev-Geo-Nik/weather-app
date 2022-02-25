@@ -1,16 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useWeatherContext } from '../context/weatherContext';
-import { WiCloudy } from "react-icons/wi";
+import {background, background2, partlyCloudy, rain} from "./weatherIconsHelper";
+import WeatherForecast from './WeatherForecast';
+import WeatherSearch from './WeatherSearch';
 
-import SearchLocationMethods from './SearchLocationMethods';
+
+
+
+
 
 const  WeatherAppContainer :React.FC = () => {
+ 
 
-    const {state:{locationData,location,defaultTemperatureMetric} } = useWeatherContext(); 
-    console.log(location)
+  const {state:{locationData,isLoading,isThemeBtnClicked} } = useWeatherContext(); 
+
+    
     let displayInfos: (JSX.Element|null) = null;
-
  
 
     if (locationData) {
@@ -27,61 +33,35 @@ const  WeatherAppContainer :React.FC = () => {
           forecasts
         } = locationData;
         
-        // console.log(direction)
-
-      let arrayData = forecasts.map((forecast,index)=>{
-        // const {code,date,high,day,low,text} = forecast;
         
-        
-                  if(index > 5){
-                    return
-                  }
-
-                return( 
-                <div className="list-container" key={forecast.date}>
-                   <p className="day-text">{index === 0 ? "Today":forecast.day}</p>
-                   <p className="icon-container"> {<WiCloudy className="icon"/>}</p>
-                   <p className="weather-text">{forecast.text}</p>
-                   <p className="day-low">{forecast.low}&deg;</p>
-                   <div className="color-bar"></div>
-                   <p className="day-high">{forecast.high}&deg;</p>
-                  
-                   {/* <p className="day-value">{new Date(forecast.date).getDay()}/{new Date(forecast.date).getDate()}</p> */}
-                   {/* <p className="month-value">{new Date(forecast.date).getDay()}</p>
-                   <p className="month-value">{new Date(forecast.date).getMonth()}</p> */}
-                   {/* <p className="day-month">{}</p> */}
-                 </div>
-                   ) 
-
-               })
-      displayInfos =  <div className="container">
-                             
-                            <h1 className="city-title">{city}</h1>
-                            <h5 className="country-title">{country}</h5>
-                            <p className="temperature">{temperature }<span className="celsius-text">&deg;</span> </p>
-                            <p className="temperature-text">{text}</p>
-                            <div className="forecast-container">
-                                   <div className="forecast-text-icon-container">
-                                       
-                                       <p className="forecast-title">11-DAY FORECAST </p>
-
-                                   </div>
-                                  
-                                  {arrayData}
-                            </div>
-                            
+      
+   
+    
+               
+      displayInfos =  <div className="infos-container">
+                            <img src={partlyCloudy} alt="background-image"  className="background-image" />
+                            <h1 className="city-title text-header">{city}</h1>
+                            <h5 className="country-title text-header">{country}</h5>
+                            <p className="temperature text-header">{temperature }<span className="celsius-symbol">&deg;</span> </p>
+                            <p className="temperature-text text-header">{text}</p>
+                            <WeatherForecast/>           
                      </div>
 
     }
-
-
-
+    let displayBackgroundImage = isThemeBtnClicked?   background2: background;
 
   return (
-    <WeatherAppContainerElement >
-       <SearchLocationMethods/>
-        {displayInfos}
-     
+    <WeatherAppContainerElement  >   
+       {/* <Spinner/> */}
+       {/* <BsToggleOff className = "toggleBtn"/> */}
+       <div className="main-container">
+            <img src={displayBackgroundImage} alt="background-image"  className="background-image-container" />
+            <div className="search-container">
+                  <WeatherSearch/>
+                  {displayInfos}
+                
+            </div>
+       </div>
     </WeatherAppContainerElement >
 );
 };
@@ -90,35 +70,89 @@ export default WeatherAppContainer;
 
 
 const WeatherAppContainerElement = styled.div`
-
-      border: 1px solid #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       
-      .container{
-        border: 1px solid #ebb8b8;
+      /* border: 2px solid #ce1111; */
+
+    
+
+      .main-container{
+         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+        /* background:rgba(135, 141, 151, 0.8); */
+      }
+      
+      .search-container{
+        background:rgba(7, 7, 7, 0.8);
+        position: absolute;
+        margin: 8rem auto;
+        border-radius:10px;
+       
+
+      }
+
+      .background-image{
+        width:6rem;
+        display:block;
+        margin:  0 auto;
+    
+       }
+
+
+       .background-image-container{
+         width: 100%; 
+         height: 100vh; 
+       
+       }
+
+       .background-test{
+         width: 100%;
+       }
+
+      .infos-container{
+        /* border: 1px solid #16b6df;  */
+        padding:1rem;  
+        border-radius: 10px;
+        color:#fff;
+       
+       
+        }
+
+        .header-container{
         
+        }
+        /* List container single */
+        .city-title{
+          font-size:1.8rem;
+        }
+
+        .country-title{
 
         }
 
-      
+        .temperature{
+            font-size:2rem;
+        }
 
-      /*Array styles  */
-      
-      .list-container{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-      }
+        .celsius-symbol{
 
-      .color-bar{
-        width: 5rem;
-        height:1px;
-        background: #d3a423;
-      }
-  
+        }
+        .text-header{
+          text-align: center;
+          margin: 0 0 0.5rem 0;
+     
+        }
+       
+      
+        .toggleBtn{
+          font-size:2rem;
+          color:rgba(7, 7, 7, 1);
+          align-self: flex-end;
+          margin-right: 2rem;
+          
+        }
+
+    
 
 `

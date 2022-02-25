@@ -1,6 +1,6 @@
 import React,{createContext,Dispatch,ReactNode,useContext,useEffect,useReducer} from 'react';
 
-import { Action, ActionTypes, params, SearchGeolocationType } from './constants ';
+import { Action, ActionTypes, parameters, params, SearchGeolocationType, searchIpUrl, Themes } from './constants ';
 
 import { reducer } from './weatherReducer';
 
@@ -11,6 +11,12 @@ export interface weatherContextState {
         locationData:SearchGeolocationType | null;
         latitude : number | null;
         longitude : number | null;
+        url: string;
+        isLoading:boolean;
+        error:string;
+        theme:string;
+        isThemeBtnClicked:boolean;
+
 }
 
 const initialState : weatherContextState = {
@@ -18,8 +24,12 @@ const initialState : weatherContextState = {
     defaultTemperatureMetric:"c",
     locationData:null,
     latitude:null,
-    longitude:null
-    
+    longitude:null,
+    url:"",
+    isLoading:false,
+    error:"",
+    theme:Themes.DEFAULT,
+    isThemeBtnClicked: false
 }
 
 
@@ -47,6 +57,37 @@ export const WeatherContextProvider = ({
     children: ReactNode;
     }) => {
     const [state, dispatch] = useReducer (reducer,initialState);
+
+
+
+    useEffect(()=>{
+        fetchData(state.url, params,ActionTypes.FETCH_LOCATION);
+    },[state.url])     
+    
+
+
+        
+    useEffect(()=>{
+        fetchData(searchIpUrl,parameters,ActionTypes.FETCH_INITIAL_USER_DATA)
+    },[])
+
+
+     const fetchData = async  ( url:string,params:{},type:ActionTypes) =>{
+     
+        try {
+            const res = await fetch(url, params);
+    
+             if (res.status >= 200 || res.status <= 299 ) {
+                 const data   = await res.json();
+                dispatch({type:type,payload:data})
+             }
+         } catch (err) {
+            //    return error = err;
+         }
+         
+       
+      }
+
 
     return(
     <weatherContext.Provider value = {{ state, dispatch }}>

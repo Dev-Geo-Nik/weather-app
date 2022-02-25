@@ -9,11 +9,9 @@ const  App :React.FC = () => {
     
 
   return (
-  <section>
-    
-     {/* <SearchLocationMethods/>  */}
+  < >
     <WeatherAppContainer/>
-  </section>
+  </>
 );
 };
 

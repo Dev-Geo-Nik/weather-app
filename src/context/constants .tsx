@@ -4,6 +4,8 @@ export enum ActionTypes {
     FETCH_NEW_GEOLOCATION = "FETCH_NEW_GEOLOCATION",
     FETCH_NEW_LOCATION  = "FETCH_NEW_LOCATION",
     FETCH_NEW_LOCATION_WITH_LAT_LNG = "FETCH_NEW_LOCATION_WITH_LAT_LNG",
+    THEME_TOGGLE_ON = "THEME_TOGGLE_ON",
+    THEME_TOGGLE_OFF = "THEME_TOGGLE_OFF",
 }
 
 
@@ -16,6 +18,10 @@ export type Action = {
 
 
 
+export enum Themes{
+    DEFAULT = "DEFAULT",
+    DARK = "DARK",
+}
 
 
 
@@ -117,3 +123,16 @@ export const params = {
         "x-rapidapi-key": "ebb163ffcdmsh8e13aa2f4cf52fap1a017ajsnc76ba1428ae5"
     }
 }
+
+
+
+export const searchIpUrl = "https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation?apikey=873dbe322aea47f89dcf729dcc8f60e8";
+
+
+export const parameters = {
+ "method": "GET",
+ "headers": {
+     "x-rapidapi-host": "find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com",
+     "x-rapidapi-key": "ebb163ffcdmsh8e13aa2f4cf52fap1a017ajsnc76ba1428ae5"
+ }
+ }

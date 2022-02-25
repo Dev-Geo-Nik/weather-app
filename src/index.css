@@ -1,13 +1,76 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    /* height: 100vh; */
+    font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+:root {
+    /* Colors */
+    --clr-primary-1: #272b30;
+    --clr-primary-2: #56595e;
+    --clr-primary-3: #4799eb;
+
+    --clr-primary-4: #2086ec;
+    --clr-primary-5: #e0a53f;
+    --clr-primary-6: #d10024;
+    --clr-primary-7: #24292e;
+    --clr-primary-8: #f4f5f8;
+
+    /* Text colors  and Tags*/
+    --clr-text-1: #aaaaaa;
+
+    /* Animations */
+    --transition: all 0.3s ease-in-out;
+
+    /* Typography */
+    --spacing: 0.1rem;
+    --line-height: 1.25;
+
+    /*margin*/
+    --margin-x: 25rem;
+    --margin-y: 4rem;
+    --section-margin-y: 20rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    /* color: #fff; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    letter-spacing: var(--spacing);
+    text-transform: capitalize;
+    /* line-height: var(--line-height); */
+    /* margin-bottom: 0.75rem; */
+}
+
+.btn {
+    cursor: pointer;
+    /* background: var(--clr-primary-6); */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    letter-spacing: var(--spacing);
+    transform: var(--transition);
+    border-color: transparent;
+    font-weight: bold;
 }
