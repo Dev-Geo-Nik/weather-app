@@ -74,3 +74,10 @@ h5 {
     border-color: transparent;
     font-weight: bold;
 }
+
+@media (max-width: 650px) {
+    html {
+        /* margin: 0rem -8rem; */
+        font-size: 80%;
+    }
+}

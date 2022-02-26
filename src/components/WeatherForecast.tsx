@@ -47,12 +47,11 @@ export default WeatherForecast;
 
 const WeatherForecastElement = styled.div`
 
-       .list-container{
-      
+       .list-container{     
        display: flex;
        align-items: center;
        /* background: blue; */
-    
+       
       }
 
 
@@ -107,14 +106,14 @@ const WeatherForecastElement = styled.div`
       
       .forecast-container{
         margin-top: 1rem;
-        padding:0.5rem;
-        border-radius: 4px;
+        /* padding:0.5rem; */
+        /* border-radius: 4px; */
       }
 
       .forecast-text-icon-container{
         display: flex;
-        
         align-items: center;
+        justify-content: center;
    
       
       }
@@ -132,7 +131,7 @@ const WeatherForecastElement = styled.div`
       
       .color-bar{
         width: 5rem;
-        height:4px;
+        height:2px;
         background: #d3a423;
       }
 
@@ -147,4 +146,6 @@ const WeatherForecastElement = styled.div`
         .temperature-text{
           margin-bottom: 2rem;
       }
+
+     
 `

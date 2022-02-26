@@ -12,10 +12,11 @@ export const reducer : ReducerType = (state,action) => {
    switch (action.type) {
          
          case  ActionTypes.FETCH_LOCATION:
+         
             return ({...state,locationData:action.payload});
          case  ActionTypes.FETCH_INITIAL_USER_DATA:
              const{city}  = action.payload
-            url = `https://yahoo-weather5.p.rapidapi.com/weather?location=${city}&format=json&u=c`
+             url = `https://yahoo-weather5.p.rapidapi.com/weather?location=${city}&format=json&u=c`
          return ({...state,url:url});
          case  ActionTypes.FETCH_NEW_GEOLOCATION:
             const {lat,lng} = action.payload;
@@ -25,9 +26,9 @@ export const reducer : ReducerType = (state,action) => {
             url = `https://yahoo-weather5.p.rapidapi.com/weather?location=${action.payload}&format=json&u=c`
             return ({...state,url:url });
          case  ActionTypes.THEME_TOGGLE_ON:
-            return ({...state,isThemeBtnClicked:action.payload});
+            return ({...state,isThemeBtnClicked:action.payload.isToggleOn,theme:action.payload.theme});
          case  ActionTypes.THEME_TOGGLE_OFF:
-            return ({...state,isThemeBtnClicked:action.payload});
+            return ({...state,isThemeBtnClicked:action.payload.isToggleOn,theme:action.payload.theme});
       default:
          return state;
 }

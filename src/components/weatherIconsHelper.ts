@@ -31,52 +31,32 @@ export {rain,partlyCloudy,mostlyCloudy,clear,fogDay,scatteredShowers,showers,clo
 
 export  const  weatherConditionIcon =  (data: string) =>{
     let displayWeatherIcon = "";
+
+    switch (data) {
+      case "Rain":
+       return  displayWeatherIcon = rain;
+      case "Cloudy":
+       return  displayWeatherIcon = cloudy;
+      case "Breezy":
+       return    displayWeatherIcon = breezy;
+      case "Thunderstorms":
+       return    displayWeatherIcon = thunderstorms;
+      case "Partly Cloudy":
+       return  displayWeatherIcon = partlyCloudy;
+      case "Mostly Cloudy":
+       return   displayWeatherIcon = mostlyCloudy;
+      case "Mostly Sunny":
+       return    displayWeatherIcon = fogDay;
+      case "Showers":
+       return   displayWeatherIcon = showers;
     
-    if(data.includes("Rain")){
-        displayWeatherIcon = rain;
-      
-     }
+      case "Scattered":
+       return  displayWeatherIcon = scatteredShowers;
+      case "Sunny":
+       return   displayWeatherIcon = clear;
+    
+      default:
+        return displayWeatherIcon =mostlyCloudy
+    }
    
-
-     if(data.includes("Cloudy")){
-       displayWeatherIcon = cloudy;
-     }
-     if(data.includes("Breezy")){
-       displayWeatherIcon = breezy;
-     }
-
-     if(data.includes("Thunderstorms")){
-       displayWeatherIcon = thunderstorms;
-     }
-
-     if(data.includes("Partly Cloudy")){
-       displayWeatherIcon = partlyCloudy;
-           
-     }
-     if(data.includes("Mostly Cloudy")){
-       displayWeatherIcon = mostlyCloudy;
-       
-     }
-     
-     
-     if(data.includes("Mostly Sunny")){
-       displayWeatherIcon = fogDay;
-     
-     }
-     if(data.includes("Showers")){
-       displayWeatherIcon = showers;
-       
-     }
-
-     if(data.includes("Scattered")){
-       displayWeatherIcon = scatteredShowers;
-   
-     }
-
-  
-     if(data.includes("Sunny")){
-       displayWeatherIcon = clear;
-     }
-
-     return displayWeatherIcon;
 }

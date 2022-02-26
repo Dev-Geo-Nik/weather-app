@@ -74,6 +74,99 @@ export type SearchGeolocationType = {
     ]
 }
 
+export const defaultLocationData  = {
+
+    
+
+        location: {
+            city:"Vienna",
+            region: "Vienna",
+            woeid: 551801,
+            country: "Austria",
+            lat: 48.202541,
+            long: 16.368799,
+            timezone_id: "Europe/Vienna"
+        },
+        current_observation: {
+            wind: {
+                chill: -2,
+                direction: 295,
+                speed:  17.6
+    
+            },
+            atmosphere: {
+                humidity: 70,
+                visibility: 16.01,
+                pressure: 1001,
+                rising: 0
+            },
+            astronomy: {
+                sunrise: "6:41 am",
+                sunset: "5:35 pm"
+            },
+            condition: {
+                code: 30,
+                text: "Partly Cloudy",
+                temperature: "3"
+            },
+    
+            pubDate: 1645860600
+        },
+    
+        forecasts: [
+            {
+                code: 39,
+                date: 1645844400,
+                day: "Sat",
+                high: 7,
+                low: 1,
+                text: "Scattered Showers",
+               
+            },
+            {
+                code: 32,
+                date: 1646103600,
+                day: "Tue",
+                high: 6,
+                low: -3,
+                text: "Sunny"
+            },
+            {
+                code: 32,
+                date: 1646103600,
+                day: "Tue",
+                high: 6,
+                low: -3,
+                text: "Sunny"
+            },
+            {
+                code: 32,
+                date: 1646103600,
+                day: "Tue",
+                high: 6,
+                low: -3,
+                text: "Sunny"
+            },
+            {
+                code: 30,
+                date: 1646362800,
+                day: "Fri",
+                high: 6,
+                low: 0,
+                text: "Partly Cloudy"
+            },
+            {
+            code: 30,
+            date: 1646449200,
+            day: "Sat",
+            high: 6,
+            low: -1,
+            text: "Partly Cloudy"
+            }
+        ]
+
+}
+
 
 export type IpLocationOfVisitorType = {
     continent:string,
