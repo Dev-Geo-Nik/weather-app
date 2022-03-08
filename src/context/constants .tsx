@@ -213,7 +213,7 @@ export const params = {
     method: "GET",
     headers: {
         "x-rapidapi-host": "yahoo-weather5.p.rapidapi.com",
-        "x-rapidapi-key": "ebb163ffcdmsh8e13aa2f4cf52fap1a017ajsnc76ba1428ae5"
+        "x-rapidapi-key": "e10973666fmsh8401609c340d96bp1f21b9jsn0ce5c8991ab2"
     }
 }
 

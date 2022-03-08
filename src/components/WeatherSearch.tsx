@@ -77,7 +77,7 @@ const WeatherSearchElement = styled.div`
         }
 
         .input{
-            padding: 0.3rem 1.6rem 0.3rem 0;
+            padding: 0.4rem 0.3rem 0.4rem 1.6rem ;
             border-radius: 5px;
             /* margin: 0 0.4rem; */
             
@@ -85,8 +85,8 @@ const WeatherSearchElement = styled.div`
 
         .icon-search{
             position: absolute;
-            right: 2%;
-            bottom: 5%;
+            left: 2%;
+            bottom: 10%;
        
         
         }
